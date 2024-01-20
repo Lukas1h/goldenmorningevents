@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Header/>
-          <main className='flex justify-center'>
+          <main className='flex justify-center mb-10'>
             <div className="min-h-screen max-w-5xl mx-4">
               {children}
             </div>

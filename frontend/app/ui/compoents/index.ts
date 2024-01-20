@@ -1,3 +1,4 @@
-import Header from "./Header";
+import Header from "./Header"; 
+import {Card,Post} from "./Home"
 
-export {Header}
+export {Header,Card,Post}
