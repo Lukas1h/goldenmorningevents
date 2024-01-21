@@ -14,10 +14,12 @@ export default async function Card({ card }: { card: HomeCard }) {
 		<Link scroll={false} href={`/${card.slug.current}`}>
 			<NextUICard className="max-w-[340px] hover:scale-[103%]">
 				<CardBody className="p-0 text-small text-default-400">
-					<img
-						src={card.image.url}
+					<Image
+						src={card.image.url + "?h=800&auto=format"}
 						height={220}
+						width={600}
 						style={{ width: 'auto', height: '220px', content: "fill" }}
+						alt={`Image for ${card.slug.current}`}
 					/>
 				</CardBody>
 				<CardFooter className="flex flex-col items-start">

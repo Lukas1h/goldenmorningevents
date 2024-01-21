@@ -4,6 +4,7 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDis
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { HomeCard } from "@/app/types";
+import Image from "next/image";
 import { fetchCardBySlug, fetchCards } from "@/app/lib/sanity";
 
 
@@ -47,7 +48,28 @@ export default function Post({params,posts}: any) {
 
 	return (
 		
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} closeButton={<></>} size={"3xl"} backdrop={"transparent"} scrollBehavior={"inside"}>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} closeButton={<></>} size={"3xl"}  scrollBehavior={"inside"}
+		motionProps={{
+			variants: {
+			enter: {
+				y: 0,
+				opacity: 1,
+				transition: {
+				duration: 0.0,
+				ease: "easeOut",
+				},
+			},
+			exit: {
+				y: 0,
+				opacity: 0,
+				transition: {
+				duration: 0,
+				ease: "easeIn",
+				},
+			},
+			}
+		}}
+	  >
         <ModalContent>
           {(onClose) => (
             <>
@@ -58,11 +80,13 @@ export default function Post({params,posts}: any) {
 				</Link>
 			  </ModalHeader>
               <ModalBody>
-				
-			 	 <img
-					src={zeePost?.image.url}
-					style={{ width: 'auto',objectFit:"cover",borderRadius:"8px",maxHeight:"45vh" }}
-				/>
+			 	 <Image
+						src={zeePost?.image.url + "?h=800&auto=format"}
+						height={220}
+						width={600}
+						style={{ width: 'auto',objectFit:"cover",borderRadius:"8px",maxHeight:"45vh" }}
+						alt={`Image for ${zeePost?.slug.current}`}
+					/>
                 <p> 
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nullam pulvinar risus non risus hendrerit venenatis.
