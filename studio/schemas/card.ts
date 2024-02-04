@@ -40,6 +40,12 @@ export default defineType({
       title: 'URL',
       type: 'string',
     }),
+    defineField({
+      name: 'shouldShowOnHome',
+      title: 'Show On Home',
+      type: 'boolean',
+      initialValue:true
+    }),
   ],
 
   

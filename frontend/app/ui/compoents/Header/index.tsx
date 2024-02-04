@@ -15,8 +15,8 @@ export default function Header() {
             </NavbarBrand>
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <Button as={Link} color="primary" href="#" variant="flat">
-                        Sign Up
+                    <Button as={Link} color="primary" href="/contact-us" variant="flat">
+                        Contact Us
                     </Button>
                 </NavbarItem>
             </NavbarContent>
