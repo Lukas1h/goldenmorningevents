@@ -5,7 +5,7 @@ import { PageCard, Page} from '@/app/ui/compoents';
 import { fetchPages } from './lib/sanity';
 // import { useRouter } from 'next/router';
 
-
+export const dynamic = 'force-dynamic'
 
 export default async function Home({
   params,

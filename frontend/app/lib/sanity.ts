@@ -14,7 +14,8 @@ export async function fetchPages():Promise<[Page]> {
   const posts = await client.fetch(`*[_type == "card"]{
 		...,
     "shouldShowOnHome": shouldShowOnHome,
-		"image": image.asset->{url, altText}
+		"image": image.asset->{url, altText},
+    "isSanityPage":true,
 	}`);
   // 
   

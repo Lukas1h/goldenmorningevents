@@ -12,6 +12,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 //Local
 import { Page } from "@/app/types";
 import { client} from "@/app/lib/sanity";
+import { Order } from "..";
 
 //Sanity
 import {PortableText} from '@portabletext/react'
@@ -20,6 +21,16 @@ import {getImageDimensions} from '@sanity/asset-utils'
 
 //Styles
 import "./styles.css"
+
+
+const nonSanityPages = [
+	{
+		slug:"order",
+		component:Order,
+		title:"Order"
+		
+	}
+]
 
 
 const SanityImageComponent = ({value, isInline}:{value:any,isInline:boolean}) => {
@@ -51,16 +62,12 @@ const components = {
 export default function PageComponent({ params, pages }: any) {
 	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 	const [page, setPage] = useState<Page>()
+	const [nonSanityPage, setNonSanityPage] = useState<any>(undefined)
 	const router = useRouter()
 
 	const shouldBeOpen = !!params.path
 	const slug = params.path?.[0] ?? ""
 
-	// let post = posts.filter((e:any)=>{
-	// 	if(e.slug.current == slug){
-	// 		return e
-	// 	}
-	// })[0]
 	const close = ()=>{
 		router.push("/")
 	}
@@ -70,30 +77,43 @@ export default function PageComponent({ params, pages }: any) {
 		console.log("Slug", slug)
 		console.log("post   ", page)
 		if (shouldBeOpen) {
-			let page = pages.filter((e: any) => {
-				if (e.slug.current == slug) {
-					return e
+			
+			let isInNonSanityPages = false
+			nonSanityPages.forEach((page)=>{
+				if(slug == page.slug){
+					console.log("found slug" + slug + "in nonSanityPages")
+					setNonSanityPage(page)
+					isInNonSanityPages = true
 				}
-			})[0]
+			})
 
-			if(page){
-				console.log("!!! Page exists")
-			}else{
-				console.log("!!! NO PAGE")
+			if(!isInNonSanityPages){
+				let page = pages.filter((e: any) => {
+					if (e.slug.current == slug) {
+						return e
+					}
+				})[0]
+
+				if(page){
+					console.log("Page exists")
+				}else{
+					notFound()
+				}
+				setPage(page)
 			}
 
-			setPage(page)
 
 			onOpen()
 		} else {
 			console.log("closing")
+			setNonSanityPage(undefined)
 			onClose()
 
 		}
 	}, [params])
 
 
-
+	if(!nonSanityPage){
 
 	return (
 
@@ -158,4 +178,53 @@ export default function PageComponent({ params, pages }: any) {
 			</ModalContent>
 		</Modal>
 	)
+	}else{
+		return (
+
+			<Modal isOpen={isOpen} onOpenChange={onOpenChange}  size={"3xl"} scrollBehavior={"outside"}
+				closeButton={<></>}
+				onClose={()=>{
+					router.push("/")
+				}}
+				motionProps={{
+					variants: {
+						enter: {
+							y: 0,
+							opacity: 1,
+							transition: {
+								duration: 0.0,
+								ease: "easeOut",
+							},
+						},
+						exit: {
+							y: 0,
+							opacity: 0,
+							transition: {
+								duration: 0,
+								ease: "easeIn",
+							},
+						},
+					}
+				}}
+			>
+				<ModalContent>
+					<ModalHeader className="flex flex-row gap-1 justify-between items-center">
+						{nonSanityPage.title}
+						<button  onClick={close} className="w-[20px] flex mx-8" >
+							Close
+						</button>
+					</ModalHeader>
+					<ModalBody>
+
+						<div className="post-body">
+							<nonSanityPage.component/>
+						</div>
+						
+					</ModalBody>
+					<ModalFooter>
+					</ModalFooter>
+				</ModalContent>
+			</Modal>
+		)
+	}
 }
