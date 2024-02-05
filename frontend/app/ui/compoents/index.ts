@@ -1,4 +1,6 @@
 import Header from "./Header"; 
-import {Card,Post} from "./Home"
+import Footer from "./Footer"; 
+import {PageCard,Page} from "./Home"
+import Order from "./Order";
 
-export {Header,Card,Post}
+export {Header,PageCard,Page,Footer,Order}

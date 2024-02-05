@@ -1,3 +1,3 @@
-import HomeCard from "./card";
+import Page from "./Page";
 
-export type {HomeCard}
+export type {Page}

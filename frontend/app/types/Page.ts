@@ -1,7 +1,7 @@
 
 
 
-type HomeCard = {
+type Page = {
     title:string,
     slug:{
         current:string
@@ -10,7 +10,8 @@ type HomeCard = {
         url:string
     }
     excerpt:string,
-    body:[any]
+    body:[any],
+    shouldShowOnHome:true
 }
 
-export default HomeCard
+export default Page

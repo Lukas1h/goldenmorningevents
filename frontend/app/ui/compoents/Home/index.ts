@@ -1,3 +1,3 @@
-import Card from "./Card";
-import Post from "./Post";
-export {Card,Post}
+import PageCard from "./PageCard";
+import Page from "./Page";
+export {PageCard,Page}

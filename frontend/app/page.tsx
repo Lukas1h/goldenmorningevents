@@ -1,11 +1,11 @@
 // "use client"
 import Image from 'next/image'
 import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-org/react';
-import { Card, Post} from '@/app/ui/compoents';
-import { fetchCards } from './lib/sanity';
+import { PageCard, Page} from '@/app/ui/compoents';
+import { fetchPages } from './lib/sanity';
 // import { useRouter } from 'next/router';
 
-
+export const dynamic = 'force-dynamic'
 
 export default async function Home({
   params,
@@ -14,11 +14,11 @@ export default async function Home({
   params: { slug: string };
   searchParams: any;
 }) {
-  const cards = await fetchCards()
+  const pages = await fetchPages()
 
   return (
     <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
-      <NextUICard className="md:col-span-3 max-w-[340px] md:max-w-none">
+      <NextUICard className="md:col-span-2 max-w-[340px] md:max-w-none">
         <Image
           src={"/hero.png"}
           width={1920}
@@ -27,13 +27,13 @@ export default async function Home({
         />
       </NextUICard>
       {
-        cards.map((card)=>{
-          return (
-            <Card key={card.slug.current} card={card}></Card>
-          )
+        pages.map((page)=>{
+          return page.shouldShowOnHome ? (
+            <PageCard key={page.slug.current} page={page}></PageCard>
+          ) : <></>
         })
       }
-      <Post params={searchParams} posts={cards}></Post>
+      <Page params={searchParams} pages={pages}></Page>
     </div>
   )
 }
