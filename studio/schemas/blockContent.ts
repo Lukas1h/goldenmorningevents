@@ -1,5 +1,4 @@
 import {defineType, defineArrayMember} from 'sanity'
-
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -50,6 +49,9 @@ export default defineType({
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+validation: Rule => Rule.uri({
+    scheme: ['http', 'https', 'mailto',"tel"]
+  })
               },
             ],
           },
@@ -63,5 +65,8 @@ export default defineType({
       type: 'image',
       options: {hotspot: true},
     }),
+    {
+      type: 'break'
+    }
   ],
 })

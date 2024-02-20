@@ -21,7 +21,9 @@ export async function fetchPages():Promise<[Page]> {
   
   
   
-  console.log(posts)
+  posts.forEach(element => {
+    console.log(element.body)
+  });
   return posts;
 }
 
