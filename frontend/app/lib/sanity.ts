@@ -20,10 +20,6 @@ export async function fetchPages():Promise<[Page]> {
   // 
   
   
-  
-  posts.forEach(element => {
-    console.log(element.body)
-  });
   return posts;
 }
 
