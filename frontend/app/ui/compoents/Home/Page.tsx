@@ -21,16 +21,9 @@ import {getImageDimensions} from '@sanity/asset-utils'
 
 //Styles
 import "./styles.css"
+import NonSanityPage from "@/app/types/NonSanityPage";
 
 
-const nonSanityPages = [
-	{
-		slug:"order",
-		component:Order,
-		title:"Order"
-		
-	}
-]
 
 
 const SanityImageComponent = ({value, isInline}:{value:any,isInline:boolean}) => {
@@ -53,13 +46,16 @@ const SanityImageComponent = ({value, isInline}:{value:any,isInline:boolean}) =>
     )
   }
 
+  const BreakComponent = ()=><br></br>
+
 const components = {
 	types: {
 	  image: SanityImageComponent,
+	  break: BreakComponent
 	},
   }
 
-export default function PageComponent({ params, pages }: any) {
+export default function PageComponent({ params, pages,nonSanityPages }: {params:{path:string | undefined}, pages:Array<Page>,nonSanityPages:Array<NonSanityPage>}) {
 	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 	const [page, setPage] = useState<Page>()
 	const [nonSanityPage, setNonSanityPage] = useState<any>(undefined)
@@ -72,10 +68,11 @@ export default function PageComponent({ params, pages }: any) {
 		router.push("/")
 	}
 
+	console.log("post body   ", page?.body)
 
 	useEffect(() => {
 		console.log("Slug", slug)
-		console.log("post   ", page)
+		console.log("post body   ", page?.body)
 		if (shouldBeOpen) {
 			
 			let isInNonSanityPages = false
@@ -217,7 +214,7 @@ export default function PageComponent({ params, pages }: any) {
 					<ModalBody>
 
 						<div className="post-body">
-							<nonSanityPage.component/>
+							{nonSanityPage.component}
 						</div>
 						
 					</ModalBody>

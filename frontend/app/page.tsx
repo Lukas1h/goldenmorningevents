@@ -1,9 +1,27 @@
-// "use client"
+
 import Image from 'next/image'
 import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-org/react';
 import { PageCard, Page} from '@/app/ui/compoents';
 import { fetchPages } from './lib/sanity';
+import {Order,OrderComplete} from '@/app/ui/compoents';
+import NonSanityPage from './types/NonSanityPage';
 // import { useRouter } from 'next/router';
+
+const nonSanityPages:Array<NonSanityPage> = [
+	{
+		slug:"order",
+		component:<Order/>,
+		title:"Order"
+		
+	},
+  {
+		slug:"complete",
+		component:<OrderComplete/>,
+		title:"Order Complete"
+		
+	}
+]
+
 
 export const dynamic = 'force-dynamic'
 
@@ -33,7 +51,7 @@ export default async function Home({
           ) : <></>
         })
       }
-      <Page params={searchParams} pages={pages}></Page>
+      <Page params={searchParams} nonSanityPages={nonSanityPages} pages={pages}></Page>
     </div>
   )
 }

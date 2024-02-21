@@ -20,8 +20,6 @@ export async function fetchPages():Promise<[Page]> {
   // 
   
   
-  
-  console.log(posts)
   return posts;
 }
 
