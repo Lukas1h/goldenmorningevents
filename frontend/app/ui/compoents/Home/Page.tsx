@@ -21,6 +21,7 @@ import {getImageDimensions} from '@sanity/asset-utils'
 
 //Styles
 import "./styles.css"
+import NonSanityPage from "@/app/types/NonSanityPage";
 
 
 
@@ -54,7 +55,7 @@ const components = {
 	},
   }
 
-export default function PageComponent({ params, pages,nonSanityPages }: any) {
+export default function PageComponent({ params, pages,nonSanityPages }: {params:{path:string | undefined}, pages:Array<Page>,nonSanityPages:Array<NonSanityPage>}) {
 	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 	const [page, setPage] = useState<Page>()
 	const [nonSanityPage, setNonSanityPage] = useState<any>(undefined)

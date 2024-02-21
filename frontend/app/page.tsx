@@ -4,9 +4,10 @@ import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-or
 import { PageCard, Page} from '@/app/ui/compoents';
 import { fetchPages } from './lib/sanity';
 import {Order,OrderComplete} from '@/app/ui/compoents';
+import NonSanityPage from './types/NonSanityPage';
 // import { useRouter } from 'next/router';
 
-const nonSanityPages = [
+const nonSanityPages:Array<NonSanityPage> = [
 	{
 		slug:"order",
 		component:<Order/>,
