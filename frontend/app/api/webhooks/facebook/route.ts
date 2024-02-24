@@ -25,6 +25,8 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
     const data = await request.json()
     const field = data.field
+    console.log(`got body ${request.body}`)
+    console.log(`got data ${data}`)
 
     console.log(`got field ${field}`)
 
