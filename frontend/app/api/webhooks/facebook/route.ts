@@ -21,3 +21,20 @@ export async function GET(request: Request) {
     console.log(`Unknown mode: ${mode}`)
     return Response.json({error:`Unknown mode: ${mode}`},{status:500})
   }
+
+export async function POST(request: Request) {
+    const data = await request.json()
+    const field = data.field
+
+    console.log(`got field ${field}`)
+
+    if(field == "feed"){
+        //Feed update
+        console.log(`item ${data.item}`)
+        console.log(`verb ${data.verb}`)
+        console.log(`message ${data.message}`)
+
+    }
+
+    return new Response(null,{status:200})
+  }
