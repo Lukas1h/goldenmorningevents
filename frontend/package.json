@@ -21,6 +21,7 @@
     "next-sanity-image": "^6.1.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-social-media-embed": "^2.5.9",
     "sanity": "^3.27.1",
     "stripe": "^14.14.0"
   },

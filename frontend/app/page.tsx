@@ -3,9 +3,9 @@ import Image from 'next/image'
 import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-org/react';
 import { PageCard, Page} from '@/app/ui/compoents';
 import { fetchPages } from './lib/sanity';
-import {Order,OrderComplete} from '@/app/ui/compoents';
+import {Order,OrderComplete,FacebookPosts} from '@/app/ui/compoents';
 import NonSanityPage from './types/NonSanityPage';
-// import { useRouter } from 'next/router';
+import { FacebookEmbed } from 'react-social-media-embed';
 
 const nonSanityPages:Array<NonSanityPage> = [
 	{
@@ -51,6 +51,7 @@ export default async function Home({
           ) : <></>
         })
       }
+      <FacebookPosts></FacebookPosts>
       <Page params={searchParams} nonSanityPages={nonSanityPages} pages={pages}></Page>
     </div>
   )
