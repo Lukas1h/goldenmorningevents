@@ -1,5 +1,6 @@
 import { createClient } from "@sanity/client";
-import { Page } from "../types";
+import { Page,Image } from "../types";
+
 
 export const client = createClient({
   projectId: "7iu3rqrq",
@@ -21,6 +22,20 @@ export async function fetchPages():Promise<[Page]> {
   
   
   return posts;
+}
+
+export async function fetchImges():Promise<[Image]> {
+  console.log("fetchImages called")
+  const images = await client.fetch(`*[_type == "imagecard"]{
+		...,
+		"image": image.asset->{url, altText},
+    "id": _id
+	}`);
+  console.log("images")
+  console.log(images)
+  
+  
+  return images;
 }
 
 // export async function fetchCardBySlug(slug:string):Promise<HomeCard> {

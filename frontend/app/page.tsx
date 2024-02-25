@@ -2,10 +2,13 @@
 import Image from 'next/image'
 import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-org/react';
 import { PageCard, Page} from '@/app/ui/compoents';
-import { fetchPages } from './lib/sanity';
+import { fetchPages,fetchImges } from './lib/sanity';
 import {Order,OrderComplete,FacebookPosts} from '@/app/ui/compoents';
 import NonSanityPage from './types/NonSanityPage';
 import { FacebookEmbed } from 'react-social-media-embed';
+import ImageCard from './ui/compoents/Home/ImageCard';
+
+
 
 const nonSanityPages:Array<NonSanityPage> = [
 	{
@@ -33,6 +36,9 @@ export default async function Home({
   searchParams: any;
 }) {
   const pages = await fetchPages()
+  const images = await fetchImges()
+
+  
 
   return (
     <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
@@ -44,6 +50,7 @@ export default async function Home({
           alt='Golden Morning Events logo.'
         />
       </NextUICard>
+      
       {
         pages.map((page)=>{
           return page.shouldShowOnHome ? (
@@ -51,7 +58,18 @@ export default async function Home({
           ) : <></>
         })
       }
-      <FacebookPosts></FacebookPosts>
+
+      {
+        images.map((image)=>{
+          return <ImageCard image={image}></ImageCard>
+        })
+      }
+      
+      {/* <FacebookPosts
+
+     ></FacebookPosts> */}
+
+
       <Page params={searchParams} nonSanityPages={nonSanityPages} pages={pages}></Page>
     </div>
   )
