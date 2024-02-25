@@ -8,22 +8,25 @@ import { client } from '@/app/lib/sanity';
 import { useNextSanityImage } from 'next-sanity-image';
 
 export default async function ImageCard({ image }: { image: ImageType }) {
-
+    //max-w-[340px] hover:fixed hover:w-[90vw] top-0 bottom-0 left-0 right-0
 
 	return (
-			<NextUICard className="max-w-[340px] hover:scale-[103%]">
+    
+            <NextUICard className="max-w-[340px]">
 				<CardBody className="p-0 text-small text-default-400">
-					<Image
-						src={image.image.url + "?h=800&auto=format"}
-						height={220}
-						width={600}
-						style={{ width: 'auto', height: '220px', content: "fill" }}
-						alt={`Image`}
-					/>
+                    <div className='h-[220px]'>
+                        <img
+                            src={image.image.url + "?h=800&auto=format"}
+                            // style={{ width: 'auto', height: '220px', content: "fill" }}
+                            className='w-full'
+                            alt={`Image`}
+                        />
+                    </div>
 				</CardBody>
 				<CardFooter className="flex flex-col items-start">
 					<p>{image.caption}</p>
 				</CardFooter>
 			</NextUICard>
+
 	)
 }

@@ -20,6 +20,9 @@ dependencies:
   '@sanity/image-url':
     specifier: ^1.0.2
     version: 1.0.2
+  '@shopify/storefront-api-client':
+    specifier: ^0.3.0
+    version: 0.3.0
   '@stripe/react-stripe-js':
     specifier: ^2.4.0
     version: 2.4.0(@stripe/stripe-js@2.4.0)(react-dom@18.2.0)(react@18.2.0)
@@ -3686,6 +3689,16 @@ packages:
     dependencies:
       '@types/uuid': 8.3.4
       uuid: 8.3.2
+    dev: false
+
+  /@shopify/graphql-client@0.10.0:
+    resolution: {integrity: sha512-Us8t+WHVJjGcnOyxVHPFb9NpVZlVCgiFCFrYjK/ejmXxOEHNpCbEz++9D3moiehlZrY3r5F7KtvpE6koZ6ZTwQ==}
+    dev: false
+
+  /@shopify/storefront-api-client@0.3.0:
+    resolution: {integrity: sha512-wjJYTVLJHS0ZaUcg9pGCE6rOKiA/PsA5rhGaOVajmf0O8nC2W9RTl6zcBmXJhMjnnTrawG8cm5I/YuoaJNLjsA==}
+    dependencies:
+      '@shopify/graphql-client': 0.10.0
     dev: false
 
   /@stripe/react-stripe-js@2.4.0(@stripe/stripe-js@2.4.0)(react-dom@18.2.0)(react@18.2.0):
