@@ -14,7 +14,7 @@ export default async function Card({ page }: { page: Page }) {
 		<Link scroll={false} href={`/${page.slug.current}`}>
 			<NextUICard className="max-w-[340px] hover:scale-[103%]">
 				<CardBody className="p-0 text-small text-default-400">
-					<div className='h-[220px]'>
+					<div className='h-[220px] overflow-clip'>
                         <img
                             src={page.image.url + "?h=800&auto=format"}
                             // style={{ width: 'auto', height: '220px', content: "fill" }}

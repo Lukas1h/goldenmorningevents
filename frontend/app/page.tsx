@@ -68,7 +68,7 @@ export default async function Home({
       <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-4 mt-4 mb-4'>
         {
           products.map((product) => {
-            return <ProductCard product={product}></ProductCard>
+            return <ProductCard key={product.id} product={product}></ProductCard>
           })
         }
       </div>
@@ -77,7 +77,7 @@ export default async function Home({
       <div className='grid grid-flow-row-dense grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
         {
           images.map((image) => {
-            return <ImageCard image={image}></ImageCard>
+            return <ImageCard key={image.id} image={image}></ImageCard>
           })
         }
       </div>

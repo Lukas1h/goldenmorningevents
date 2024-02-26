@@ -14,7 +14,7 @@ export default async function ImageCard({ image }: { image: ImageType }) {
     
             <NextUICard className="max-w-[340px]">
 				<CardBody className="p-0 text-small text-default-400">
-                    <div className='h-[220px]'>
+                    <div className='h-[220px] overflow-clip'>
                         <img
                             src={image.image.url + "?h=800&auto=format"}
                             // style={{ width: 'auto', height: '220px', content: "fill" }}
