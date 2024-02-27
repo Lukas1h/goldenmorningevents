@@ -2,6 +2,7 @@ type Product =   {
     id: string,
     title: string,
     description: string,
+    handle:string,
     featuredImage: {
         url:string
         width:number

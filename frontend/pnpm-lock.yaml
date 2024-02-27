@@ -53,6 +53,9 @@ dependencies:
   sanity:
     specifier: ^3.27.1
     version: 3.27.1(@types/node@20.11.4)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
+  shopify-buy:
+    specifier: ^2.21.1
+    version: 2.21.1
   stripe:
     specifier: ^14.14.0
     version: 14.14.0
@@ -8263,6 +8266,10 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+
+  /shopify-buy@2.21.1:
+    resolution: {integrity: sha512-loiv6edkoleLwN8bA+07PDjq/EJ7KL/VHVRCJMUe4467MzFVcmAgAa4FvHrN6EICpq88h7A47UdqYa2R/W3hNw==}
+    dev: false
 
   /side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}

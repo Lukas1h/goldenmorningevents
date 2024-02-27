@@ -25,6 +25,7 @@
     "react-dom": "^18",
     "react-social-media-embed": "^2.5.9",
     "sanity": "^3.27.1",
+    "shopify-buy": "^2.21.1",
     "stripe": "^14.14.0"
   },
   "devDependencies": {
