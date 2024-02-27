@@ -1,43 +1,22 @@
 
+//UI
 import Image from 'next/image'
 import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-org/react';
-import { PageCard, Page } from '@/app/ui/compoents';
-import { fetchPages, fetchImges } from './lib/sanity';
-import { Order, OrderComplete, FacebookPosts } from '@/app/ui/compoents';
-import NonSanityPage from './types/NonSanityPage';
-import { FacebookEmbed } from 'react-social-media-embed';
-import ImageCard from './ui/compoents/Home/ImageCard';
+
+//Components
+import { PageCard, ImageCard, ProductCard, HeaderCard, FacebookCard } from '@/app/ui/compoents';
+
+
+//APIs
+import { fetchImges } from './lib/sanity';
 import { getAllProducts } from './lib/shopify';
-import { ProductCard, HeaderCard } from './ui/compoents/Home';
 
 
-
-const nonSanityPages: Array<NonSanityPage> = [
-  {
-    slug: "order",
-    component: <Order />,
-    title: "Order"
-
-  },
-  {
-    slug: "complete",
-    component: <OrderComplete />,
-    title: "Order Complete"
-
-  }
-]
 
 
 export const dynamic = 'force-dynamic'
 
-export default async function Home({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams: any;
-}) {
-  const pages = await fetchPages()
+export default async function Home() {
   const images = await fetchImges()
   const products = await getAllProducts()
 
@@ -55,13 +34,29 @@ export default async function Home({
           />
         </NextUICard>
 
-        {
-          pages.map((page) => {
-            return page.shouldShowOnHome ? (
-              <PageCard key={page.slug.current} page={page}></PageCard>
-            ) : <></>
-          })
-        }
+        <PageCard page={{
+          title:"Flowers",
+          path:"/flowers",
+          excerpt:"This is an excerpt about flowers."
+
+        }}></PageCard>
+        
+        <PageCard page={{
+          title:"Nursry",
+          path:"/nursry",
+          excerpt:"This is the excerpt about the Nuersry page."
+
+        }}></PageCard>
+
+        <PageCard page={{
+          title:"Seeds and Bulbs",
+          path:"/seeds-and-bulbs",
+          excerpt:"This is the excerpt about seeds and bulbs"
+
+        }}></PageCard>
+
+        <FacebookCard></FacebookCard>
+        
       </div>
 
       <HeaderCard title='Marketplace'></HeaderCard>
@@ -82,7 +77,6 @@ export default async function Home({
         }
       </div>
 
-      <Page params={searchParams} nonSanityPages={nonSanityPages} pages={pages}></Page>
     </>
   )
 }
