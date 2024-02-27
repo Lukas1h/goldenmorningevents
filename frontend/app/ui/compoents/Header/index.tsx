@@ -1,10 +1,12 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as NextUILink, Button } from "@nextui-org/react";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
     return (
         <Navbar>
-            <NavbarBrand>
+            <NavbarBrand className="  hidden sm:block">
+                <Link href={"/"}>
                 <img
                     alt="Golden Morning Events Logo"
                     src="/logo-header.png"
@@ -12,10 +14,11 @@ export default function Header() {
                     height={500/10}
                     className="m-4"
                 />
+                </Link>
             </NavbarBrand>
-            <NavbarContent justify="end">
-                <NavbarItem className="h-[40px] hidden sm:block">
-                    <Button as={Link} color="primary" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/profile.php?id=61556291533830" variant="flat"
+            <div className="flex justify-between w-full sm:w-auto  sm:space-x-4">
+                <NavbarItem className="h-[40px]">
+                    <Button as={NextUILink} color="primary" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/profile.php?id=61556291533830" variant="flat"
                         className="aspect-square"
                     >
                         <img 
@@ -27,11 +30,11 @@ export default function Header() {
                     </Button>
                 </NavbarItem>
                 <NavbarItem className="h-[40px]">
-                    <Button as={Link} color="primary" href="/contact-us" variant="flat" className="font-semibold">
+                    <Button as={NextUILink} color="primary" href="/contact-us" variant="flat" className="font-semibold">
                         Order Now
                     </Button>
                 </NavbarItem>
-            </NavbarContent>
+                </div>
         </Navbar>
     )
 }

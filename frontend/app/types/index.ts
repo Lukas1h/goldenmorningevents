@@ -1,3 +1,5 @@
-import Page from "./Page";
 
-export type {Page}
+import Image from "./Image";
+import Product from "./Product";
+
+export type {Image,Product}

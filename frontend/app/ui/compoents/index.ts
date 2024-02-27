@@ -1,8 +1,8 @@
 import Header from "./Header"; 
 import Footer from "./Footer"; 
-import {PageCard,Page} from "./Home"
 import Order from "./Order";
 import OrderComplete from "./OrderComplete";
 import FacebookPosts from "./FacebookPosts";
+export * from './Cards';
 
-export {Header,PageCard,Page,Footer,Order,OrderComplete,FacebookPosts}
+export {Header,Footer,Order,OrderComplete,FacebookPosts}
