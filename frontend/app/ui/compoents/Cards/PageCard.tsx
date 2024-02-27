@@ -1,11 +1,8 @@
 "use server"
 
-import Image from 'next/image'
+
 import { Card as NextUICard, CardHeader, CardBody, CardFooter } from '@nextui-org/react';
 import Link from 'next/link';
-import { Page } from '@/app/types';
-import { client } from '@/app/lib/sanity';
-import { useNextSanityImage } from 'next-sanity-image';
 
 export default async function PageCard({ page }: { page: {title:string,excerpt:string,path:string} }) {
 

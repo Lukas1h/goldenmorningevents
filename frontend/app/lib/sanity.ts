@@ -1,5 +1,6 @@
+//@ts-check
 import { createClient } from "@sanity/client";
-import { Page,Image } from "../types";
+import { Image } from "../types";
 
 
 export const client = createClient({
@@ -10,7 +11,7 @@ export const client = createClient({
   // token: process.env.SANITY_SECRET_TOKEN // Only if you want to update content with the client
 });
 
-export async function fetchPages():Promise<[Page]> {
+export async function fetchPages():Promise<[]> {
   console.log("fetchPages called")
   const posts = await client.fetch(`*[_type == "card"]{
 		...,
